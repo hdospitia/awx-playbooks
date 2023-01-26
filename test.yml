@@ -4,5 +4,10 @@
   
   tasks:
     - name: Lookup and debug secret
-      debug:
-        msg: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=secret/security/tenable-linking-key') }}"
+      ansible.builtin.set_fact:
+        response: "{{ lookup('community.hashi_vault.vault_kv2_get', 'security/tenable-linking-key' ) }}"
+
+    - name: Display results
+      ansible.builtin.debug:
+        msg:
+          - "{{ response.secret.key }}"
