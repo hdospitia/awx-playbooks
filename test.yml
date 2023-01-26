@@ -5,4 +5,4 @@
   tasks:
     - name: Lookup and debug secret
       debug:
-        msg: "{{ lookup('hashi_vault', 'secret=secret/security/tenable-linking-key') }}"
+        msg: "{{ lookup('community.hashi_vault.hashi_vault', 'secret=secret/security/tenable-linking-key') }}"
