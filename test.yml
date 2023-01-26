@@ -1,5 +1,8 @@
 ---
 - name: Print secret
+  hosts: all
+  
   tasks:
-    - debug:
+    - name: Lookup and debug secret
+      debug:
         msg: "{{ lookup('hashi_vault', 'secret=secret/security/tenable-linking-key') }}"
